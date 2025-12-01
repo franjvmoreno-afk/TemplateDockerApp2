@@ -35,3 +35,11 @@ RUN apk update && \
     php8-ctype \
     php8-dom \
     rm -rf /var/lib/apk/lists/*
+
+RUN mkdir -p /var/www/${SERVER_NAME} \
+    && chown -R apache:apache /var/www/${SERVER_NAME} \
+    && chmod -R 755 /var/www/${SERVER_NAME}
+
+COPY ./docker/http/apache+php/conf.d/000-moodle.local.conf /etc/apache2/conf.d/
+
+ENTRYPOINT [ "http", "-D", "FOREGROUND"]
