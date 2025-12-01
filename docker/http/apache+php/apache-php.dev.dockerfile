@@ -1,6 +1,12 @@
 # Usa la imagen base de Alpine
 FROM alpine:latest
 
+ARG SERVER_NAME=${SERVERNAME}
+ARG SERVER_PORT=${SERVERPORT}
+ENV SERVER_NAME=${SERVER_NAME}
+ENV SERVER_PORT=${SERVER_PORT}
+
+EXPOSE ${SERVER_PORT}
 
 # Instalar Apache 2, su módulo PHP y las extensiones de Moodle
 RUN apk update && \
