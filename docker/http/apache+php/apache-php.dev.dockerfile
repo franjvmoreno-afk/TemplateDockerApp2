@@ -42,4 +42,4 @@ RUN mkdir -p /var/www/${SERVER_NAME} \
 
 COPY ./docker/http/apache+php/conf.d/000-moodle.local.conf /etc/apache2/conf.d/
 
-ENTRYPOINT [ "http", "-D", "FOREGROUND"]
+ENTRYPOINT [ "httpd", "-D", "FOREGROUND"]
